@@ -8,7 +8,7 @@ import ChatSection from '../component/chatSection/ChatSection';
 
 
 const ChatPage = styled.div`
-
+    display: flex;
 `;
 
 const Chat = () => {
