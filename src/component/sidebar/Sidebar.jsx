@@ -17,20 +17,21 @@ const fl = css`
 `;
 
 const SidebarContainer = styled.div`
-    flex: .35;
-    background-color: #F4F4F8;
+    flex: .25;
+    background-color: #Fff;
     height: 100vh;
     display: flex;
     flex-direction: column;
     border-right: .15rem solid lightgrey;
-    overflow-y: scroll;
+    
+    /* overflow-y: scroll; */
 `;
 
 const HeaderContainer = styled.div`
     display: flex;
     align-items: center;
     padding:0 10px;
-    height:63px;
+    height:50px;
     border-bottom: 1px solid #e5e5e5;
 `;
 
@@ -80,6 +81,13 @@ const Sidebar = () => {
                 </Btn>
             </HeaderContainer>
             <GroupChatContainer>
+                <SideBarChar/>     
+                <SideBarChar/>     
+                <SideBarChar/>     
+                <SideBarChar/>     
+                <SideBarChar/>     
+                <SideBarChar/>     
+                <SideBarChar/>     
                 <SideBarChar/>     
             </GroupChatContainer>
         </SidebarContainer>
