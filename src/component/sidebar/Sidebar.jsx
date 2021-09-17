@@ -84,11 +84,7 @@ const Sidebar = () => {
                 <SideBarChar/>     
                 <SideBarChar/>     
                 <SideBarChar/>     
-                <SideBarChar/>     
-                <SideBarChar/>     
-                <SideBarChar/>     
-                <SideBarChar/>     
-                <SideBarChar/>     
+                <SideBarChar/>    
             </GroupChatContainer>
         </SidebarContainer>
     )

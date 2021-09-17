@@ -64,11 +64,14 @@ const Mic = styled(MicNone)`
 `;
 
 const ChatSection = () => {
-    const [input, setInput] = useState("");
+
+    const [input, setInput] = useState('');
+    
     const sendMessage = (e) => {
         e.preventDefault();
 
     }
+
     return (
         <ChatSectionContainer>
             <ChatHeader>
@@ -83,7 +86,7 @@ const ChatSection = () => {
                         type="text"
                         placeholder="write your message..."
                         value={input}
-                        onChange={e => setInput(e.target.value)}
+                        onchange={(e)=>setInput(e.target.value)}
                     />
                     <Button type="submit" onClick={sendMessage} >
                         <Mic/>
