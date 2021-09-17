@@ -1,15 +1,24 @@
 import React from 'react';
-// Global Style
-import Globalstyled from './globalstyle'
-// import Chat page
+import { useSelector } from 'react-redux';
+import GlobalStyle from './globalstyle'
+// Chat page
 import Chat from './pages/chat';
+import { selectUser } from './redux/userslice';
+
 
 
 function App() {
+  const user = useSelector(selectUser)
   return (
     <>
-      <Globalstyled/>
-      <Chat/>
+      <GlobalStyle />
+      {
+        user ? (
+            <Chat />
+          ) : (
+            <h1>login</h1>
+          )
+      }
     </>
   );
 }
