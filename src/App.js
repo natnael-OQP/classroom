@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Login from './component/Login/login';
 import GlobalStyle from './globalstyle'
 // Chat page
 import Chat from './pages/chat';
@@ -16,7 +17,7 @@ function App() {
         user ? (
             <Chat />
           ) : (
-            <h1>login</h1>
+            <Login/>
           )
       }
     </>
