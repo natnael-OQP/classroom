@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {ReactComponent as GoogleLogo} from '../../asset/google.svg'
 import image  from '../../asset/chat.svg'
+import { signInWithGoogle } from '../../firebasesetup/firebase';
 
 const LoginContainer = styled.div`
     width: 100%;
@@ -81,7 +82,9 @@ const Login = () => {
                     <AppInfo>Create an invite-only place where you belong</AppInfo>
                     <AppInfo2>We suggest using the email address that you use at work.</AppInfo2>
                     
-                    <Button>
+                    <Button
+                        onClick={signInWithGoogle}
+                    >
                         <GoogleLogo />
                         <P>Continue with google</P>
                     </Button>
