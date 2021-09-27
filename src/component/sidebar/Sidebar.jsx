@@ -8,8 +8,10 @@ import RateReviewIcon from '@material-ui/icons/RateReview';
 import Button from '@material-ui/core/Button';
 // component
 import SideBarChar from '../SidebarChat/Sidebarchar';
-
-
+// redux
+import {useSelector} from 'react-redux'
+import { selectUser } from '../../redux/userslice';
+import { auth } from '../../firebasesetup/firebase';
 
 const fl = css`
     display: flex;
@@ -68,10 +70,11 @@ const GroupChatContainer = styled.div`
 
 
 const Sidebar = () => {
+    const user = useSelector(selectUser);
     return (
         <SidebarContainer>
             <HeaderContainer>
-                <Profile/>
+                <Profile   src={user.photo} />
                 <SearchContainer>
                     <SearchIcon/>
                     <Input type="search" placeholder="Search" />
