@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // styled component
 import styled,{css} from 'styled-components/macro'
 // material ui
@@ -11,7 +11,7 @@ import SideBarChar from '../SidebarChat/Sidebarchar';
 // redux
 import {useSelector} from 'react-redux'
 import { selectUser } from '../../redux/userslice';
-import { auth } from '../../firebasesetup/firebase';
+import db, { auth } from '../../firebasesetup/firebase';
 
 const fl = css`
     display: flex;
@@ -25,8 +25,7 @@ const SidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
     border-right: .15rem solid lightgrey;
-    
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
 `;
 
 const HeaderContainer = styled.div`
@@ -71,23 +70,50 @@ const GroupChatContainer = styled.div`
 
 const Sidebar = () => {
     const user = useSelector(selectUser);
+
+    const [chats, setChats] = useState([]);
+
+    useEffect(() => {
+        db.collection('chats').onSnapshot(snapshot => {
+            setChats(
+                snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    data: doc.data(),
+                }))
+            )
+        })
+    },[])
+
+    const add = () => {
+        const chatNam = prompt('please enter class room name')
+        if (chatNam) {
+            db.collection('chats').add({
+                chatName:chatNam,
+            })
+        }
+    }
+
     return (
         <SidebarContainer>
             <HeaderContainer>
-                <Profile   src={user.photo} />
+                <Profile
+                    onClick={()=> auth.signOut()}
+                    src={user.photo} />
                 <SearchContainer>
                     <SearchIcon/>
                     <Input type="search" placeholder="Search" />
                 </SearchContainer>
                 <Btn >
-                    <RateReviewIcon/>
+                    <RateReviewIcon onClick={add} />
                 </Btn>
             </HeaderContainer>
             <GroupChatContainer>
-                <SideBarChar/>     
-                <SideBarChar/>     
-                <SideBarChar/>     
-                <SideBarChar/>    
+                {
+                    chats.map(({id,data :{chatName}}) => (
+                        <SideBarChar key={id} id={id} chatName={chatName} />
+                        
+                    ))
+                }                
             </GroupChatContainer>
         </SidebarContainer>
     )

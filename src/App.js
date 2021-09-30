@@ -16,7 +16,6 @@ function App() {
   useEffect(()=>{
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        // user login
         dispatch(login({
           uid : authUser.uid,
           displayName : authUser.displayName,
@@ -24,7 +23,6 @@ function App() {
           photo: authUser.photoURL,
         }))
       } else {
-        // user log out
         dispatch(logout)
       }
     })

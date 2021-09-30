@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // styled component
 import styled from 'styled-components'
 import {Profile} from '../sidebar/Sidebar'
 import { Button } from '@material-ui/core';
 import { MicNone } from '@material-ui/icons';
+import Message from '../message/message';
+import { useSelector } from 'react-redux';
+import { selectChatId, selectChatName } from '../../redux/chatslice';
+import db from '../../firebasesetup/firebase';
+import firebase from 'firebase/compat/app';
+import { selectUser } from '../../redux/userslice';
+
+
 
 const ChatSectionContainer = styled.div`
     flex:.75;
@@ -56,7 +64,6 @@ const Form = styled.form`
 
 const Input = styled.input`
     flex: 1;
-    
 `;
 
 const Mic = styled(MicNone)`
@@ -64,33 +71,69 @@ const Mic = styled(MicNone)`
 `;
 
 const ChatSection = () => {
+    const [inputs, setInputs] = useState('');
+    const chatName = useSelector(selectChatName);
+    const chatId = useSelector(selectChatId);
+    const [messages, setMessage] = useState([]);
+    const user = useSelector(selectUser );
+    useEffect(() => {
+        if (chatId) {
+            db.collection('chats')
+                .doc(chatId)
+                .collection('messages')
+                .orderBy('timestamp', 'desc')
+                .onSnapshot(snapshot => (
+                    setMessage(
+                        snapshot.docs.map(doc => ({
+                            id: doc.id,
+                            data: doc.data(),
+                        }))
+                    )))
+        }
+    }, [chatId]);
 
-    const [input, setInput] = useState('');
-    
-    const sendMessage = (e) => {
+    const sentMessage = (e) => {
         e.preventDefault();
 
+        db.collection("chats").doc(chatId).collection("messages").add({
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            messages: inputs,
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email,
+            photo: user.photo,
+        });
+
+        setInputs("")
     }
+    
 
     return (
         <ChatSectionContainer>
             <ChatHeader>
                 <Profile/>
-                <P>jonas blue</P>
+                <P>{chatName}</P>
             </ChatHeader>
             <ChatBody>
+                {
+                    messages.map(({id,data}) => (
+                        <Message key={id} id={id} content={data} />
+                    ))
+                }
             </ChatBody>
             <ChatInput>
                 <Form>
                     <Input
                         type="text"
                         placeholder="write your message..."
-                        value={input}
-                        onchange={(e)=>setInput(e.target.value)}
+                        value={inputs}
+                        onChange={(e)=>setInputs(e.target.value)}
                     />
-                    <Button type="submit" onClick={sendMessage} >
-                        <Mic/>
-                    </Button>
+                    <Button
+                        type="submit"
+                        onClick={sentMessage}
+                    >
+                    send</Button>
                 </Form>
             </ChatInput>
         </ChatSectionContainer>

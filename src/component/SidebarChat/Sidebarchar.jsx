@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 // styled components
 import styled from 'styled-components';
+import { setChat } from '../../redux/chatslice';
 // profile
 import {Profile} from '../sidebar/Sidebar'
 
@@ -52,12 +54,21 @@ const Time = styled.small`
 `;
 
 
-const SideBarChar = () => {
+const SideBarChar = ({ id, chatName }) => {
+    const dispatch = useDispatch();
+    
     return (
-        <EachChat>
+        <EachChat
+            onClick={() => {
+                dispatch(setChat({
+                    chatId: id,
+                    chatName: chatName,
+                }) )
+            }}
+        >
             <Profile />
             <ChatInfo>
-                <H4>Class</H4>
+                <H4>{chatName}</H4>
                 <P>last Message sent</P>
                 <Time>7:20 Pm</Time>
             </ChatInfo>
