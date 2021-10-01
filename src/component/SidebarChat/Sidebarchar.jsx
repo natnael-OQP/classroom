@@ -62,7 +62,7 @@ const SideBarChar = ({ id, chatName }) => {
     useEffect(() => {
         db.collection('chats').doc(id).collection("messages").orderBy('timestamp','desc').onSnapshot(snapshot => (
             setChatInfo(
-                snapshot.docs.map(doc => doc.data())
+                snapshot.docs.map((doc) => doc.data())
             )
         ))
     },[id])
@@ -76,11 +76,11 @@ const SideBarChar = ({ id, chatName }) => {
                 }) )
             }}
         >
-            <Profile src={chatInfo[0].photo} />
+            <Profile src={chatInfo[0]?.photo} />
             <ChatInfo>
                 <H4>{chatName}</H4>
-                <P>{chatInfo[0].message}</P>
-                <Time>{new Date(chatInfo[0]?.timestamp).toLocaleString() }</Time>
+                <P>{ chatInfo[0]?.messages }</P>
+                <Time>{}</Time>
             </ChatInfo>
         </EachChat>
     )

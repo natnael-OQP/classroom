@@ -10,6 +10,7 @@ import { selectChatId, selectChatName } from '../../redux/chatslice';
 import db from '../../firebasesetup/firebase';
 import firebase from 'firebase/compat/app';
 import { selectUser } from '../../redux/userslice';
+import FlipMove from 'react-flip-move';
 
 
 
@@ -18,7 +19,6 @@ const ChatSectionContainer = styled.div`
     background-color: #F8FAFB;
     display: flex;
     flex-direction: column;
-
 `;
 
 const ChatHeader = styled.div`
@@ -41,7 +41,14 @@ const P   = styled.p`
 
 const ChatBody = styled.div`
     flex: 1;
+    overflow-y: scroll;
+    -ms-overflow-style:none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+        display: none;
+    }
 `;
+
 
 const ChatInput = styled.div`
     display: flex;
@@ -115,11 +122,13 @@ const ChatSection = () => {
                 <P>{chatName}</P>
             </ChatHeader>
             <ChatBody>
-                {
-                    messages.map(({id,data}) => (
-                        <Message key={id} id={id} content={data} />
-                    ))
-                }
+                <FlipMove>    
+                    {
+                        messages.map(({id,data}) => (
+                            <Message key={id} id={id} content={data} />
+                        ))
+                    }
+                </FlipMove>
             </ChatBody>
             <ChatInput>
                 <Form>

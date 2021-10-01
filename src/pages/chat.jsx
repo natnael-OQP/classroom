@@ -7,8 +7,11 @@ import ChatSection from '../component/chatSection/ChatSection';
 
 
 
+
 const ChatPage = styled.div`
     display: flex;
+    height:100vh;
+    box-sizing: border-box;
 `;
 
 const Chat = () => {
@@ -18,7 +21,7 @@ const Chat = () => {
             {/*sidebar*/}
                 <Sidebar  />
             {/*chat section*/}
-                <ChatSection/>
+            <ChatSection/>
         </ChatPage>
     )
 }
