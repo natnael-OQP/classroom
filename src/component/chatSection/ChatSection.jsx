@@ -111,7 +111,7 @@ const ChatSection = () => {
     return (
         <ChatSectionContainer>
             <ChatHeader>
-                <Profile/>
+                <Profile src={user.photo} />
                 <P>{chatName}</P>
             </ChatHeader>
             <ChatBody>

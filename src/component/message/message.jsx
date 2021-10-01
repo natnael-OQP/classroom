@@ -1,19 +1,26 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import {
     MessageWrapper,
     P,
-    Small
+    Small,
+    Profile
 } from '.';
-import { Profile } from '../sidebar/Sidebar';
+import { selectUser } from '../../redux/userslice';
 
 function Message({ id, content: {
     timestamp,messages,uid, displayName, email, photo
-    }}) {
+} }) {
+
+    const user = useSelector(selectUser);
+
     return (
         <>
-            <MessageWrapper >
-                <Profile src={photo}/>
-                <P>{messages}<Small>{new Date(timestamp?.toDate()).toLocaleString() }</Small></P>
+            <MessageWrapper userEmail={user.email} email={email} color="blue" >
+                <Profile userEmail={user.email} email={email} src={photo}/>
+                <P userEmail={user.email} email={email} >
+                    {messages} <Small>{new Date(timestamp?.toDate()).toLocaleString()} </Small>
+                </P>
             </MessageWrapper>
         </>
     )
