@@ -4,9 +4,8 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import db from '../../firebasesetup/firebase';
 import { setChat } from '../../redux/chatslice';
-// profile
-import {Profile} from '../sidebar/Sidebar'
 import * as timeAgo from 'timeago.js';
+import { Avatar } from '@material-ui/core';
 
 const EachChat = styled.div`
     padding:10px;
@@ -24,6 +23,15 @@ const EachChat = styled.div`
         border-radius: 5px;
     }
 `;
+export const Profile = styled(Avatar)`
+    cursor: pointer;
+    margin: 10px;
+    border-radius: 1rem;
+    @media(max-width:500px){
+        margin:3px;
+        display: none;
+    }
+`;
 
 const ChatInfo = styled.div`
     width: 100%;
@@ -34,10 +42,15 @@ const ChatInfo = styled.div`
 `;
 
 const H4 = styled.h4`
+    white-space: nowrap;
     font-size: .9rem;
     margin-bottom: .15rem;
     letter-spacing:.03rem;
     font-family: Helvetica, sans-serif;
+    @media(max-width:500px){
+        font-size: .8rem;
+        
+    }
 `;
 
 const P = styled.p`
@@ -50,9 +63,12 @@ const P = styled.p`
 
 const Time = styled.small`
     position: absolute;
-    top:0;
-    right: 5px;
+    top:-1px;
+    right: 1px;
     font-family: Helvetica, sans-serif;
+    @media(max-width:594px){
+        display: none;
+    }
 `;
 
 

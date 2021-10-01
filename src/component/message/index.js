@@ -8,10 +8,10 @@ export const MessageWrapper = styled.div(({userEmail,email,color}) => ({
     display: "flex",
     alignItems: "center",
     width: "fit-content",
-    padding:"0 15px" ,
-    margin: "15px 20px",
+    padding:"0 5px" ,
+    margin: "15px 0px",
     marginLeft: userEmail === email && "auto",
-    position: "relative"
+    position: "relative",
 }));
 
 export const Profile = styled(Avatar)`

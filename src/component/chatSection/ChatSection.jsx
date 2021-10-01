@@ -24,11 +24,15 @@ const ChatSectionContainer = styled.div`
     }
 
     @media(max-width:790px){
-        flex:.50;
+        flex:.70;
     }
 
     @media(max-width:590px){
-        flex:55;
+        width: 57;
+    }
+
+    @media(max-width:400px){
+        width: 100%;
     }
 `;
 
@@ -40,6 +44,9 @@ const ChatHeader = styled.div`
     display: flex;
     align-items: center;
     padding-left: 1rem;
+    @media(max-width:400px){
+        padding: 0;
+    }
 `;
 
 const P   = styled.p`
@@ -65,6 +72,9 @@ const ChatInput = styled.div`
     display: flex;
     align-items: center;
     padding: 10px;
+    @media(max-width:500px){
+        padding: 4px;
+    }
     height: 40px;
     width:90%;
     background-color: #fff;

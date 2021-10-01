@@ -21,8 +21,9 @@ const Message = forwardRef (({ id, content: {
             <MessageWrapper userEmail={user.email} email={email} color="blue"  ref={ref} >
                 <Profile userEmail={user.email} email={email} src={photo}/>
                 <P userEmail={user.email} email={email} >
-                    {messages} <Small>{timeago.format(new Date(timestamp?.toDate()))}</Small>
+                    {messages} 
                 </P>
+                <Small>{timeago.format(new Date(timestamp?.toDate())) }</Small>
             </MessageWrapper>
         </>
     )

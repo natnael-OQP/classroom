@@ -41,7 +41,11 @@ const SidebarContainer = styled.div`
     }
 
     @media(max-width:590px){
-        flex: 45;
+        flex: .30;
+    }
+
+    @media(max-width:400px){
+        width: 50px;
     }
 `;
 
@@ -49,6 +53,9 @@ const HeaderContainer = styled.div`
     display: flex;
     align-items: center;
     padding:0 10px;
+    @media(max-width:400px){
+        padding:0 3px;
+    }
     height:50px;
     border-bottom: 1px solid #e5e5e5;
 `;
@@ -57,6 +64,9 @@ export const Profile = styled(Avatar)`
     cursor: pointer;
     margin: 10px;
     border-radius: 1rem;
+    @media(max-width:400px){
+        margin:5px;
+    }
 `;
 
 const SearchContainer = styled.div`
@@ -66,6 +76,9 @@ const SearchContainer = styled.div`
     border-radius: 5px;
     height:27px;
     padding: 3px;
+    @media(max-width:700px){
+        display: none;
+    }
 `;
 
 const Input = styled.input`
