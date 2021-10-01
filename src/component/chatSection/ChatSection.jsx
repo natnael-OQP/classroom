@@ -15,10 +15,21 @@ import FlipMove from 'react-flip-move';
 
 
 const ChatSectionContainer = styled.div`
-    flex:.75;
+    flex:.70;
     background-color: #F8FAFB;
     display: flex;
     flex-direction: column;
+    @media(max-width:940px){
+        flex:.65;
+    }
+
+    @media(max-width:790px){
+        flex:.50;
+    }
+
+    @media(max-width:590px){
+        flex:55;
+    }
 `;
 
 const ChatHeader = styled.div`

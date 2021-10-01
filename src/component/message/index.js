@@ -10,7 +10,8 @@ export const MessageWrapper = styled.div(({userEmail,email,color}) => ({
     width: "fit-content",
     padding:"0 15px" ,
     margin: "15px 20px",
-    marginLeft:userEmail === email && "auto"
+    marginLeft: userEmail === email && "auto",
+    position: "relative"
 }));
 
 export const Profile = styled(Avatar)`
@@ -22,7 +23,6 @@ export const Profile = styled(Avatar)`
 
 
 export const P = styled.p`
-    position: relative;
     font-size:.85rem;
     font-family:  sans-serif;
     background-color:${(props)=>props.userEmail === props.email ? "#35B259":"#fff"};
@@ -37,8 +37,12 @@ export const P = styled.p`
 `;
 export const Small = styled.small`
     position: absolute;
-    bottom:-15px;
-    right: 4px;
+    bottom:-9px;
+    left:50%;
+    transform: translate(-50%);
     z-index: 99999;
     color:#1A1C2C;
+    width: auto;
+    margin-left: auto;
+    white-space: nowrap;
 `;

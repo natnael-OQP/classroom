@@ -19,7 +19,7 @@ const fl = css`
 `;
 
 const SidebarContainer = styled.div`
-    flex: .25;
+    flex: .30;
     background-color: #Fff;
     height: 100vh;
     display: flex;
@@ -30,6 +30,18 @@ const SidebarContainer = styled.div`
     scrollbar-width: none;
     &::-webkit-scrollbar{
         display: none;
+    }
+    
+    @media(max-width:9400px){
+        flex:.35;
+    }
+
+    @media(max-width:790px){
+        flex:.50;
+    }
+
+    @media(max-width:590px){
+        flex: 45;
     }
 `;
 

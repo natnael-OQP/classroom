@@ -1,6 +1,6 @@
 import React,{forwardRef} from 'react'
 import { useSelector } from 'react-redux';
-import FlipMove from 'react-flip-move';
+import * as timeago from 'timeago.js';
 
 import {
     MessageWrapper,
@@ -21,7 +21,7 @@ const Message = forwardRef (({ id, content: {
             <MessageWrapper userEmail={user.email} email={email} color="blue"  ref={ref} >
                 <Profile userEmail={user.email} email={email} src={photo}/>
                 <P userEmail={user.email} email={email} >
-                    {messages} <Small>{new Date(timestamp?.toDate()).toLocaleString()} </Small>
+                    {messages} <Small>{timeago.format(new Date(timestamp?.toDate()))}</Small>
                 </P>
             </MessageWrapper>
         </>

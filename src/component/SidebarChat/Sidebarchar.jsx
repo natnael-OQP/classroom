@@ -6,6 +6,7 @@ import db from '../../firebasesetup/firebase';
 import { setChat } from '../../redux/chatslice';
 // profile
 import {Profile} from '../sidebar/Sidebar'
+import * as timeAgo from 'timeago.js';
 
 const EachChat = styled.div`
     padding:10px;
@@ -80,7 +81,7 @@ const SideBarChar = ({ id, chatName }) => {
             <ChatInfo>
                 <H4>{chatName}</H4>
                 <P>{ chatInfo[0]?.messages }</P>
-                <Time>{}</Time>
+                <Time>{ timeAgo.format( new Date(chatInfo[0]?.timestamp?.toDate()) ) }</Time>
             </ChatInfo>
         </EachChat>
     )
