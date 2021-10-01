@@ -26,6 +26,11 @@ const SidebarContainer = styled.div`
     flex-direction: column;
     border-right: .15rem solid lightgrey;
     overflow-y: scroll;
+    -ms-overflow-style:none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+        display: none;
+    }
 `;
 
 const HeaderContainer = styled.div`
