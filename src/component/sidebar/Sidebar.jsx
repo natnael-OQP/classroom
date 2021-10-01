@@ -111,7 +111,6 @@ const Sidebar = () => {
                 {
                     chats.map(({id,data :{chatName}}) => (
                         <SideBarChar key={id} id={id} chatName={chatName} />
-                        
                     ))
                 }                
             </GroupChatContainer>

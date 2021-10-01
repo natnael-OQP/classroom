@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 // styled components
 import styled from 'styled-components';
+import db from '../../firebasesetup/firebase';
 import { setChat } from '../../redux/chatslice';
 // profile
 import {Profile} from '../sidebar/Sidebar'
@@ -56,7 +57,16 @@ const Time = styled.small`
 
 const SideBarChar = ({ id, chatName }) => {
     const dispatch = useDispatch();
+    const [chatInfo, setChatInfo] = useState([]);
     
+    useEffect(() => {
+        db.collection('chats').doc(id).collection("messages").orderBy('timestamp','desc').onSnapshot(snapshot => (
+            setChatInfo(
+                snapshot.docs.map(doc => doc.data())
+            )
+        ))
+    },[id])
+
     return (
         <EachChat
             onClick={() => {
@@ -66,11 +76,11 @@ const SideBarChar = ({ id, chatName }) => {
                 }) )
             }}
         >
-            <Profile />
+            <Profile src={chatInfo[0].photo} />
             <ChatInfo>
                 <H4>{chatName}</H4>
-                <P>last Message sent</P>
-                <Time>7:20 Pm</Time>
+                <P>{chatInfo[0].message}</P>
+                <Time>{new Date(chatInfo[0]?.timestamp).toLocaleString() }</Time>
             </ChatInfo>
         </EachChat>
     )
