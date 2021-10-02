@@ -3,13 +3,15 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB03eda7OMtOq-tzrKt-RvojalnVc2WVBI",
-    authDomain: "debate-rooms.firebaseapp.com",
-    projectId: "debate-rooms",
-    storageBucket: "debate-rooms.appspot.com",
-    messagingSenderId: "704286705359",
-    appId: "1:704286705359:web:c2745fd7a602b21c35d9ba"
+    apiKey: "AIzaSyC6woR-ig6qfyHSjth7vedMznE6yd5SWJ4",
+    authDomain: "classroom-90d62.firebaseapp.com",
+    projectId: "classroom-90d62",
+    storageBucket: "classroom-90d62.appspot.com",
+    messagingSenderId: "211363720204",
+    appId: "1:211363720204:web:2b115a71006a60a8709229",
+    measurementId: "G-DYMNH7TCN8"
 };
+
 
 firebase.initializeApp(firebaseConfig);
 

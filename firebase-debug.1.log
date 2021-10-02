@@ -1,0 +1,43 @@
+[debug] [2021-10-02T09:02:19.463Z] ----------------------------------------------------------------------
+[debug] [2021-10-02T09:02:19.466Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Natan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-10-02T09:02:19.467Z] CLI Version:   9.19.0
+[debug] [2021-10-02T09:02:19.467Z] Platform:      win32
+[debug] [2021-10-02T09:02:19.467Z] Node Version:  v14.16.0
+[debug] [2021-10-02T09:02:19.468Z] Time:          Fri Oct 01 2021 21:02:19 GMT-1200 (GMT-12:00)
+[debug] [2021-10-02T09:02:19.468Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-02T09:02:19.535Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-02T09:02:19.536Z] > authorizing via signed-in user (makiya112545@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  F:\projects\classroom
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using classroom-90d62. 
+[debug] [2021-10-02T09:02:33.293Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/classroom-90d62 [none]
+[debug] [2021-10-02T09:02:35.340Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/classroom-90d62 200
+[debug] [2021-10-02T09:02:35.341Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/classroom-90d62 {"projectId":"classroom-90d62","projectNumber":"211363720204","displayName":"classroom","name":"projects/classroom-90d62","resources":{"hostingSite":"classroom-90d62","storageBucket":"classroom-90d62.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
