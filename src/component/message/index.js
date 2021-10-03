@@ -10,7 +10,7 @@ export const MessageWrapper = styled.div(({userEmail,email,color}) => ({
     width: "fit-content",
     padding:"0 5px" ,
     margin: "15px 0px",
-    marginLeft: userEmail === email && "auto",
+    marginLeft: {userEmail === email && "auto"},
     position: "relative",
 }));
 
